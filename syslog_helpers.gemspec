@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tommy Bishop"]
   s.email       = ["bishop.thomas@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/thbishop/syslog_helpers"
   s.summary     = %q{Helpers for syslog messages}
   s.description = %q{Hopefully making life easier when working with syslog message content}
 

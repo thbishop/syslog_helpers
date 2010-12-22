@@ -1,0 +1,48 @@
+= Syslog Helpers
+This aims to make working with syslog message content a little bit easier.
+
+
+== Installation 
+  gem install syslog_helpers
+
+
+== Usage
+  require 'syslog_helpers'
+
+
+=== Priority
+This provides helpers to assist in translatng syslog priority codes (per RFC3164 http://www.ietf.org/rfc/rfc3164.txt).
+
+You can get a hash of all possible severities
+  SyslogHelpers::Priority.severities
+  => {5=>"notice", 0=>"emerg", 6=>"info", 1=>"alert", 7=>"debug", 2=>"crit", 3=>"err", 4=>"warning"}
+
+And the same for all possible facilities
+  SyslogHelpers::Priority.severities
+  => {16=>"local0", 5=>"syslog", 22=>"local6", 11=>"ftp", 0=>"kern", 17=>"local1", 6=>"lpr", 23=>"local7", 12=>"ntp", 1=>"user", 18=>"local2", 7=>"news", 13=>"audit", 2=>"mail", 19=>"local3", 8=>"uucp", 14=>"alert", 3=>"daemon", 20=>"local4", 9=>"cron", 15=>"clock", 4=>"auth", 21=>"local5", 10=>"authpriv"}
+
+You can also get a hash of the associated data for a specific priority
+  SyslogHelpers::Priority.data_for_priority(150)
+  => {"facility"=>"local2", "severity"=>"info"}
+
+If you just want the severity, you can also use
+  SyslogHelpers::Priority.severity_for_priority(150)
+  => "info"
+
+And the same goes for just grabbing the facility
+  SyslogHelpers::Priority.facility_for_priority(150)
+  => "local2"
+
+To grab every possible combination, you can use
+  SyslogHelpers::Priority.priority_map
+  => { 0 => { 'facility' => 'kern', 'severity' => 'emerg'}, ...} # truncated
+
+
+== Contributing
+* Fork the project.
+* Make your feature addition or bug fix (with tests) in a topic branch.
+* Send a pull request and I'll get it integrated.
+
+
+== Copyright
+Copyright (c) 2010 Thomas Bishop. See LICENSE for details.
